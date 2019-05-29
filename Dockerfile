@@ -28,6 +28,8 @@ ENTRYPOINT java -jar app.jar
 # run docker container with the image + open needed port
 # docker run --rm -ti -p 8181:8080 artem_mosolv/spring_boot_docker_app
 
+# check that app works
+# http://localhost:8181/api/main/hello
 
 # docker CLI & cheat sheet
 # http://design.jboss.org/redhatdeveloper/marketing/docker_cheatsheet/cheatsheet/images/docker_cheatsheet_r3v2.pdf
