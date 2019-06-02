@@ -17,6 +17,12 @@ COPY ./target/*.jar app.jar
 # specify the port number the container should expose
 EXPOSE 8181
 
+# Create the user
+RUN adduser test_user -p password123
+
+# Tell docker that all future commands should run as the user_test
+USER test_user
+
 # run the application
 #CMD java -jar app.jar
 ENTRYPOINT java -jar app.jar
@@ -26,7 +32,10 @@ ENTRYPOINT java -jar app.jar
 # docker build -t artem_mosolv/spring_boot_docker_app .
 
 # run docker container with the image + open needed port
-# docker run --rm -ti -p 8181:8080 artem_mosolv/spring_boot_docker_app
+# docker run --rm -ti -d -p 8181:8080 artem_mosolv/spring_boot_docker_app
+
+# connect to the running container
+# docker exec -it @CONTAINER_NAME@ /bin/bash
 
 # check that app works
 # http://localhost:8181/api/main/hello
